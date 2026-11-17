@@ -1,4 +1,5 @@
 # Apeiron
+[Live Demo](https://apeiron-ehr.pages.dev/)
 
 Apeiron is an artificial life simulation engine written in Rust. Organisms move, consume resources, reproduce, mutate and die in a two-dimensional environment. Neural controllers evolve through inheritance and selection rather than gradient-based training.
 
