@@ -1,0 +1,153 @@
+.performance-monitor {
+  --paper: #f1efe7;
+  --ink: #24241f;
+  --muted: #646459;
+  --rule: #b9b8ad;
+  --moss: #4c6946;
+
+  margin-top: 32px;
+  padding: 28px;
+
+  background: var(--paper);
+  color: var(--ink);
+
+  font-family: "IBM Plex Sans", sans-serif;
+
+  color-scheme: light;
+}
+
+.telemetry-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 16px;
+
+  border-bottom: 1px solid var(--rule);
+
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+}
+
+.telemetry-header h2 {
+  font-family: "Instrument Serif", Georgia, serif;
+
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+
+  margin: 8px 0 0;
+
+  line-height: 1;
+}
+
+.telemetry-index,
+.telemetry-live,
+.telemetry-label,
+.telemetry-unit,
+.telemetry-footer,
+.frame-graph-heading,
+.frame-graph-footer {
+  font-family: "IBM Plex Mono", monospace;
+
+  font-size: 10px;
+  letter-spacing: 0.04em;
+
+  color: var(--muted);
+}
+
+.telemetry-live {
+  color: var(--moss);
+  white-space: nowrap;
+}
+
+.telemetry-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 24px;
+}
+
+.telemetry-metric {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  border-top: 1px solid var(--rule);
+
+  padding-top: 14px;
+}
+
+.telemetry-label {
+  text-transform: uppercase;
+}
+
+.telemetry-metric strong {
+  font-family: "IBM Plex Mono", monospace;
+
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 400;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.frame-time-graph {
+  margin-top: 32px;
+
+  border-top: 1px solid var(--rule);
+
+  padding-top: 20px;
+}
+
+.frame-graph-heading,
+.frame-graph-footer {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.frame-time-graph svg {
+  display: block;
+
+  width: 100%;
+  height: 100px;
+
+  margin: 16px 0 8px;
+
+  border-bottom: 1px solid var(--rule);
+}
+
+.telemetry-footer {
+  display: flex;
+
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  border-top: 1px solid var(--rule);
+
+  margin-top: 24px;
+  padding-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .telemetry-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .performance-monitor {
+    padding: 20px;
+  }
+
+  .telemetry-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

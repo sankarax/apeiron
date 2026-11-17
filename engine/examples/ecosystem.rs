@@ -1,4 +1,3 @@
-
 use apeiron_engine::{Simulation, SimulationConfig};
 use std::time::Instant;
 
@@ -15,14 +14,7 @@ fn main() {
 
     println!(
         "{:>6} {:>6} {:>6} {:>6} {:>6} {:>8} {:>8} {:>8}",
-        "Tick",
-        "Pop",
-        "Food",
-        "Births",
-        "Deaths",
-        "Speed",
-        "Energy",
-        "Max Gen"
+        "Tick", "Pop", "Food", "Births", "Deaths", "Speed", "Energy", "Max Gen"
     );
 
     for _ in 0..20 {
@@ -60,8 +52,5 @@ fn main() {
     println!();
     println!("Final evolutionary metrics:");
 
-    println!(
-        "{}",
-        serde_json::to_string_pretty(&sim.metrics()).unwrap()
-    );
+    println!("{}", serde_json::to_string_pretty(&sim.metrics()).unwrap());
 }

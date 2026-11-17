@@ -1,0 +1,53 @@
+.home .home-copy h1 {
+  font-size: clamp(80px, 12vw, 190px);
+  letter-spacing: 0.015em;
+  line-height: 1;
+}
+
+.home .home-copy h2 {
+  font-size: clamp(30px, 3.5vw, 52px);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.home-recording {
+  position: relative;
+  overflow: hidden;
+  background: #202820;
+}
+
+.home-recording canvas {
+  transition: transform 550ms ease-in;
+}
+
+.home-recording-status {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  color: #d5dfb9;
+  font: 11px var(--mono);
+  pointer-events: none;
+}
+
+.home-entering .home-recording canvas {
+  transform: scale(2.4);
+}
+
+.home-entering .home-copy {
+  opacity: 0;
+  transition: opacity 450ms ease;
+}
+
+@media (max-width: 900px) {
+  .home .home-copy h1 {
+    font-size: clamp(65px, 17vw, 150px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-recording canvas,
+  .home-entering .home-copy {
+    transition: none;
+  }
+}

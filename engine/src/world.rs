@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::config::SimulationConfig;
 use crate::food::Food;
-use crate::organism::Organism;
+use crate::organism::{Organism, Species};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct World {
@@ -33,7 +33,11 @@ impl World {
         for _ in 0..config.initial_population.min(config.max_population) {
             let id = world.allocate_organism_id();
 
-            world.organisms.push(Organism::new(id, config, rng));
+            let mut organism = Organism::new(id, config, rng);
+            if config.predation && rng.random::<f32>() < config.predator_fraction {
+                organism.species = Species::Predator;
+            }
+            world.organisms.push(organism);
         }
 
         world.spawn_food(config.initial_food, config, rng);
@@ -53,7 +57,15 @@ impl World {
         let spawn_count = count.min(available_space);
 
         for _ in 0..spawn_count {
-            self.food.push(Food::new(self.next_food_id, config, rng));
+            let mut food = Food::new(self.next_food_id, config, rng);
+            if config.resource_zones && rng.random::<f32>() < 0.8 {
+                let center = if rng.random::<bool>() { 0.25 } else { 0.75 };
+                let angle = rng.random_range(0.0..std::f32::consts::TAU);
+                let radius = rng.random::<f32>().sqrt() * config.width.min(config.height) * 0.15;
+                food.x = (config.width * center + radius * angle.cos()).rem_euclid(config.width);
+                food.y = (config.height * 0.5 + radius * angle.sin()).rem_euclid(config.height);
+            }
+            self.food.push(food);
 
             self.next_food_id += 1;
         }

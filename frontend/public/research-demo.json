@@ -1,0 +1,1527 @@
+{
+  "report": "### Hypothesis\nReducing predator metabolism may improve predator-prey coexistence by decreasing the energy demands of predators, potentially allowing for more stable population dynamics.\n\n### Methodology\n- **Baseline Experiment**: Conducted with standard predator metabolism (`predator_metabolism_scale = 1.0`).\n- **Reduced Metabolism Experiment**: Conducted with reduced predator metabolism (`predator_metabolism_scale = 0.4`).\n- **Configuration**: Both experiments used the same configuration, including the same initial population, ticks, and seeds.\n- **Metrics**: Compared final population sizes, predator counts, and herbivore counts.\n\n### Observations\n- **Final Population**: The baseline experiment had a higher mean final population (806) compared to the reduced metabolism experiment (505.33).\n- **Predator Count**: The reduced metabolism experiment had a higher mean predator count (73) compared to the baseline experiment (0).\n- **Herbivore Count**: The baseline experiment had a higher mean herbivore count (806) compared to the reduced metabolism experiment (432.33).\n\n### Conclusions\n- **Population Dynamics**: Reducing predator metabolism led to a significant decrease in the final population size and herbivore count, suggesting that reduced metabolism may not support stable coexistence.\n- **Predator Survival**: The reduced metabolism experiment showed a higher number of predators surviving to the end, indicating that lower metabolism may allow predators to persist longer, but at the cost of overall population stability.\n- **Energy Dynamics**: The reduced metabolism experiment had higher predation energy, suggesting that predators may be more active or efficient in their hunting, which could lead to increased predation pressure on herbivores.\n\n### Limitations\n- **Short-Term Focus**: The study only examined the endpoint of the simulation, not the long-term stability or dynamics over time.\n- **No Statistical Significance**: The results are based on observed differences without statistical significance testing.\n- **Limited Metrics**: The study focused on a limited set of metrics, and other factors such as energy dynamics or mutation rates were not analyzed.",
+  "experiments": [
+    {
+      "id": "f36d9a124011",
+      "name": "baseline_predator",
+      "config": {
+        "predation": true,
+        "predator_fraction": 0.2,
+        "predator_metabolism_scale": 1,
+        "attack_cost": 1,
+        "attack_range_bonus": 2,
+        "predation_efficiency": 0.7,
+        "resource_zones": false,
+        "hazard_zones": false,
+        "hazard_damage": 0.5,
+        "width": 1600,
+        "height": 900,
+        "initial_population": 1000,
+        "max_population": 2000,
+        "initial_food": 500,
+        "max_food": 2000,
+        "food_spawn_rate": 10,
+        "food_energy": 25,
+        "initial_energy": 100,
+        "max_energy": 250,
+        "max_age": 3000,
+        "mutation_rate": 0.1,
+        "mutation_strength": 0.15,
+        "seed": 42,
+        "controller": "recurrent",
+        "neural_mutation_rate": 0.05,
+        "neural_mutation_strength": 0.1
+      },
+      "ticks": 5000,
+      "results": [
+        {
+          "seed": 42,
+          "tick": 5000,
+          "population": 803,
+          "predators": 0,
+          "herbivores": 803,
+          "total_kills": 147,
+          "predation_energy": 7739.739661216736,
+          "food_count": 278,
+          "total_births": 3012,
+          "total_deaths": 3209,
+          "average_energy": 92.443665,
+          "average_age": 1154.4683,
+          "average_speed": 3.4230087,
+          "average_sensor_radius": 30.87989,
+          "average_metabolism": 0.16003726,
+          "average_size": 2.548009,
+          "average_reproduction_threshold": 192.01471,
+          "average_generation": 7.4346204,
+          "max_generation": 14,
+          "history": [
+            {
+              "tick": 0,
+              "population": 1000,
+              "predators": 178,
+              "herbivores": 822
+            },
+            {
+              "tick": 500,
+              "population": 199,
+              "predators": 5,
+              "herbivores": 194
+            },
+            {
+              "tick": 1000,
+              "population": 311,
+              "predators": 0,
+              "herbivores": 311
+            },
+            {
+              "tick": 1500,
+              "population": 732,
+              "predators": 0,
+              "herbivores": 732
+            },
+            {
+              "tick": 2000,
+              "population": 654,
+              "predators": 0,
+              "herbivores": 654
+            },
+            {
+              "tick": 2500,
+              "population": 712,
+              "predators": 0,
+              "herbivores": 712
+            },
+            {
+              "tick": 3000,
+              "population": 730,
+              "predators": 0,
+              "herbivores": 730
+            },
+            {
+              "tick": 3500,
+              "population": 773,
+              "predators": 0,
+              "herbivores": 773
+            },
+            {
+              "tick": 4000,
+              "population": 816,
+              "predators": 0,
+              "herbivores": 816
+            },
+            {
+              "tick": 4500,
+              "population": 772,
+              "predators": 0,
+              "herbivores": 772
+            },
+            {
+              "tick": 5000,
+              "population": 803,
+              "predators": 0,
+              "herbivores": 803
+            }
+          ]
+        },
+        {
+          "seed": 123,
+          "tick": 5000,
+          "population": 866,
+          "predators": 0,
+          "herbivores": 866,
+          "total_kills": 179,
+          "predation_energy": 9435.104811668396,
+          "food_count": 481,
+          "total_births": 3085,
+          "total_deaths": 3219,
+          "average_energy": 74.17706,
+          "average_age": 952.84644,
+          "average_speed": 2.480068,
+          "average_sensor_radius": 64.19024,
+          "average_metabolism": 0.14083034,
+          "average_size": 3.9700706,
+          "average_reproduction_threshold": 153.08524,
+          "average_generation": 8.475751,
+          "max_generation": 16,
+          "history": [
+            {
+              "tick": 0,
+              "population": 1000,
+              "predators": 226,
+              "herbivores": 774
+            },
+            {
+              "tick": 500,
+              "population": 169,
+              "predators": 4,
+              "herbivores": 165
+            },
+            {
+              "tick": 1000,
+              "population": 136,
+              "predators": 0,
+              "herbivores": 136
+            },
+            {
+              "tick": 1500,
+              "population": 223,
+              "predators": 0,
+              "herbivores": 223
+            },
+            {
+              "tick": 2000,
+              "population": 550,
+              "predators": 0,
+              "herbivores": 550
+            },
+            {
+              "tick": 2500,
+              "population": 714,
+              "predators": 0,
+              "herbivores": 714
+            },
+            {
+              "tick": 3000,
+              "population": 724,
+              "predators": 0,
+              "herbivores": 724
+            },
+            {
+              "tick": 3500,
+              "population": 764,
+              "predators": 0,
+              "herbivores": 764
+            },
+            {
+              "tick": 4000,
+              "population": 805,
+              "predators": 0,
+              "herbivores": 805
+            },
+            {
+              "tick": 4500,
+              "population": 826,
+              "predators": 0,
+              "herbivores": 826
+            },
+            {
+              "tick": 5000,
+              "population": 866,
+              "predators": 0,
+              "herbivores": 866
+            }
+          ]
+        },
+        {
+          "seed": 456,
+          "tick": 5000,
+          "population": 749,
+          "predators": 0,
+          "herbivores": 749,
+          "total_kills": 205,
+          "predation_energy": 11304.819366455078,
+          "food_count": 271,
+          "total_births": 4621,
+          "total_deaths": 4872,
+          "average_energy": 53.280453,
+          "average_age": 691.63416,
+          "average_speed": 2.1607616,
+          "average_sensor_radius": 60.041416,
+          "average_metabolism": 0.12992637,
+          "average_size": 7.545281,
+          "average_reproduction_threshold": 120.85951,
+          "average_generation": 16.596796,
+          "max_generation": 25,
+          "history": [
+            {
+              "tick": 0,
+              "population": 1000,
+              "predators": 223,
+              "herbivores": 777
+            },
+            {
+              "tick": 500,
+              "population": 171,
+              "predators": 4,
+              "herbivores": 167
+            },
+            {
+              "tick": 1000,
+              "population": 245,
+              "predators": 0,
+              "herbivores": 245
+            },
+            {
+              "tick": 1500,
+              "population": 729,
+              "predators": 0,
+              "herbivores": 729
+            },
+            {
+              "tick": 2000,
+              "population": 763,
+              "predators": 0,
+              "herbivores": 763
+            },
+            {
+              "tick": 2500,
+              "population": 736,
+              "predators": 0,
+              "herbivores": 736
+            },
+            {
+              "tick": 3000,
+              "population": 746,
+              "predators": 0,
+              "herbivores": 746
+            },
+            {
+              "tick": 3500,
+              "population": 759,
+              "predators": 0,
+              "herbivores": 759
+            },
+            {
+              "tick": 4000,
+              "population": 743,
+              "predators": 0,
+              "herbivores": 743
+            },
+            {
+              "tick": 4500,
+              "population": 752,
+              "predators": 0,
+              "herbivores": 752
+            },
+            {
+              "tick": 5000,
+              "population": 749,
+              "predators": 0,
+              "herbivores": 749
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1ef8f50b0690",
+      "name": "reduced_predator_metabolism",
+      "config": {
+        "predation": true,
+        "predator_fraction": 0.2,
+        "predator_metabolism_scale": 0.4,
+        "attack_cost": 1,
+        "attack_range_bonus": 2,
+        "predation_efficiency": 0.7,
+        "resource_zones": false,
+        "hazard_zones": false,
+        "hazard_damage": 0.5,
+        "width": 1600,
+        "height": 900,
+        "initial_population": 1000,
+        "max_population": 2000,
+        "initial_food": 500,
+        "max_food": 2000,
+        "food_spawn_rate": 10,
+        "food_energy": 25,
+        "initial_energy": 100,
+        "max_energy": 250,
+        "max_age": 3000,
+        "mutation_rate": 0.1,
+        "mutation_strength": 0.15,
+        "seed": 42,
+        "controller": "recurrent",
+        "neural_mutation_rate": 0.05,
+        "neural_mutation_strength": 0.1
+      },
+      "ticks": 5000,
+      "results": [
+        {
+          "seed": 42,
+          "tick": 5000,
+          "population": 442,
+          "predators": 89,
+          "herbivores": 353,
+          "total_kills": 841,
+          "predation_energy": 38648.80118179321,
+          "food_count": 497,
+          "total_births": 4463,
+          "total_deaths": 5021,
+          "average_energy": 64.77596,
+          "average_age": 471.78506,
+          "average_speed": 3.0510292,
+          "average_sensor_radius": 41.225075,
+          "average_metabolism": 0.32586822,
+          "average_size": 5.9292765,
+          "average_reproduction_threshold": 129.83632,
+          "average_generation": 13.846154,
+          "max_generation": 25,
+          "history": [
+            {
+              "tick": 0,
+              "population": 1000,
+              "predators": 178,
+              "herbivores": 822
+            },
+            {
+              "tick": 500,
+              "population": 225,
+              "predators": 53,
+              "herbivores": 172
+            },
+            {
+              "tick": 1000,
+              "population": 197,
+              "predators": 13,
+              "herbivores": 184
+            },
+            {
+              "tick": 1500,
+              "population": 596,
+              "predators": 4,
+              "herbivores": 592
+            },
+            {
+              "tick": 2000,
+              "population": 483,
+              "predators": 4,
+              "herbivores": 479
+            },
+            {
+              "tick": 2500,
+              "population": 466,
+              "predators": 9,
+              "herbivores": 457
+            },
+            {
+              "tick": 3000,
+              "population": 460,
+              "predators": 19,
+              "herbivores": 441
+            },
+            {
+              "tick": 3500,
+              "population": 435,
+              "predators": 27,
+              "herbivores": 408
+            },
+            {
+              "tick": 4000,
+              "population": 430,
+              "predators": 43,
+              "herbivores": 387
+            },
+            {
+              "tick": 4500,
+              "population": 454,
+              "predators": 62,
+              "herbivores": 392
+            },
+            {
+              "tick": 5000,
+              "population": 442,
+              "predators": 89,
+              "herbivores": 353
+            }
+          ]
+        },
+        {
+          "seed": 123,
+          "tick": 5000,
+          "population": 455,
+          "predators": 38,
+          "herbivores": 417,
+          "total_kills": 496,
+          "predation_energy": 29458.01641559601,
+          "food_count": 749,
+          "total_births": 2901,
+          "total_deaths": 3446,
+          "average_energy": 90.56982,
+          "average_age": 731.4835,
+          "average_speed": 2.6037505,
+          "average_sensor_radius": 27.651571,
+          "average_metabolism": 0.38292983,
+          "average_size": 2.9333963,
+          "average_reproduction_threshold": 179.01591,
+          "average_generation": 9.131868,
+          "max_generation": 16,
+          "history": [
+            {
+              "tick": 0,
+              "population": 1000,
+              "predators": 226,
+              "herbivores": 774
+            },
+            {
+              "tick": 500,
+              "population": 163,
+              "predators": 48,
+              "herbivores": 115
+            },
+            {
+              "tick": 1000,
+              "population": 93,
+              "predators": 11,
+              "herbivores": 82
+            },
+            {
+              "tick": 1500,
+              "population": 172,
+              "predators": 4,
+              "herbivores": 168
+            },
+            {
+              "tick": 2000,
+              "population": 454,
+              "predators": 2,
+              "herbivores": 452
+            },
+            {
+              "tick": 2500,
+              "population": 517,
+              "predators": 9,
+              "herbivores": 508
+            },
+            {
+              "tick": 3000,
+              "population": 454,
+              "predators": 12,
+              "herbivores": 442
+            },
+            {
+              "tick": 3500,
+              "population": 490,
+              "predators": 19,
+              "herbivores": 471
+            },
+            {
+              "tick": 4000,
+              "population": 470,
+              "predators": 24,
+              "herbivores": 446
+            },
+            {
+              "tick": 4500,
+              "population": 450,
+              "predators": 28,
+              "herbivores": 422
+            },
+            {
+              "tick": 5000,
+              "population": 455,
+              "predators": 38,
+              "herbivores": 417
+            }
+          ]
+        },
+        {
+          "seed": 456,
+          "tick": 5000,
+          "population": 619,
+          "predators": 92,
+          "herbivores": 527,
+          "total_kills": 622,
+          "predation_energy": 40717.46515464783,
+          "food_count": 596,
+          "total_births": 2792,
+          "total_deaths": 3173,
+          "average_energy": 96.57234,
+          "average_age": 904.231,
+          "average_speed": 2.3148866,
+          "average_sensor_radius": 41.687057,
+          "average_metabolism": 0.22927321,
+          "average_size": 4.3103814,
+          "average_reproduction_threshold": 178.16696,
+          "average_generation": 7.2940226,
+          "max_generation": 14,
+          "history": [
+            {
+              "tick": 0,
+              "population": 1000,
+              "predators": 223,
+              "herbivores": 777
+            },
+            {
+              "tick": 500,
+              "population": 200,
+              "predators": 45,
+              "herbivores": 155
+            },
+            {
+              "tick": 1000,
+              "population": 179,
+              "predators": 11,
+              "herbivores": 168
+            },
+            {
+              "tick": 1500,
+              "population": 332,
+              "predators": 9,
+              "herbivores": 323
+            },
+            {
+              "tick": 2000,
+              "population": 744,
+              "predators": 6,
+              "herbivores": 738
+            },
+            {
+              "tick": 2500,
+              "population": 727,
+              "predators": 7,
+              "herbivores": 720
+            },
+            {
+              "tick": 3000,
+              "population": 681,
+              "predators": 19,
+              "herbivores": 662
+            },
+            {
+              "tick": 3500,
+              "population": 653,
+              "predators": 23,
+              "herbivores": 630
+            },
+            {
+              "tick": 4000,
+              "population": 668,
+              "predators": 44,
+              "herbivores": 624
+            },
+            {
+              "tick": 4500,
+              "population": 647,
+              "predators": 79,
+              "herbivores": 568
+            },
+            {
+              "tick": 5000,
+              "population": 619,
+              "predators": 92,
+              "herbivores": 527
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "trace": [
+    {
+      "tool": "get_simulation_config",
+      "arguments": {},
+      "result": {
+        "defaults": {
+          "predation": false,
+          "predator_fraction": 0.2,
+          "predator_metabolism_scale": 1,
+          "attack_cost": 1,
+          "attack_range_bonus": 2,
+          "predation_efficiency": 0.7,
+          "resource_zones": false,
+          "hazard_zones": false,
+          "hazard_damage": 0.5,
+          "width": 1600,
+          "height": 900,
+          "initial_population": 200,
+          "max_population": 5000,
+          "initial_food": 500,
+          "max_food": 2000,
+          "food_spawn_rate": 10,
+          "food_energy": 25,
+          "initial_energy": 100,
+          "max_energy": 250,
+          "max_age": 3000,
+          "mutation_rate": 0.1,
+          "mutation_strength": 0.15,
+          "seed": 42,
+          "controller": "heuristic",
+          "neural_mutation_rate": 0.05,
+          "neural_mutation_strength": 0.1
+        },
+        "controllers": [
+          "heuristic",
+          "small",
+          "deep",
+          "recurrent"
+        ],
+        "required_config": {
+          "predation": true,
+          "controller": "recurrent",
+          "initial_population": 1000
+        },
+        "required_seeds": [
+          42,
+          123,
+          456
+        ],
+        "required_ticks": 5000,
+        "factor": "predator_metabolism_scale",
+        "values": [
+          1,
+          0.4
+        ],
+        "limits": {
+          "ticks": 5000,
+          "population": 1000,
+          "seeds": 3,
+          "experiments": 4
+        }
+      }
+    },
+    {
+      "tool": "create_experiment",
+      "arguments": {
+        "name": "baseline_predator",
+        "overrides_json": "{\"predation\": true, \"controller\": \"recurrent\", \"initial_population\": 1000, \"predator_metabolism_scale\": 1.0}",
+        "seeds": [
+          42,
+          123,
+          456
+        ],
+        "ticks": 5000
+      },
+      "result": {
+        "id": "f36d9a124011",
+        "config": {
+          "predation": true,
+          "predator_fraction": 0.2,
+          "predator_metabolism_scale": 1,
+          "attack_cost": 1,
+          "attack_range_bonus": 2,
+          "predation_efficiency": 0.7,
+          "resource_zones": false,
+          "hazard_zones": false,
+          "hazard_damage": 0.5,
+          "width": 1600,
+          "height": 900,
+          "initial_population": 1000,
+          "max_population": 2000,
+          "initial_food": 500,
+          "max_food": 2000,
+          "food_spawn_rate": 10,
+          "food_energy": 25,
+          "initial_energy": 100,
+          "max_energy": 250,
+          "max_age": 3000,
+          "mutation_rate": 0.1,
+          "mutation_strength": 0.15,
+          "seed": 42,
+          "controller": "recurrent",
+          "neural_mutation_rate": 0.05,
+          "neural_mutation_strength": 0.1
+        },
+        "seeds": [
+          42,
+          123,
+          456
+        ],
+        "ticks": 5000
+      }
+    },
+    {
+      "tool": "create_experiment",
+      "arguments": {
+        "name": "reduced_predator_metabolism",
+        "overrides_json": "{\"predation\": true, \"controller\": \"recurrent\", \"initial_population\": 1000, \"predator_metabolism_scale\": 0.4}",
+        "seeds": [
+          42,
+          123,
+          456
+        ],
+        "ticks": 5000
+      },
+      "result": {
+        "id": "1ef8f50b0690",
+        "config": {
+          "predation": true,
+          "predator_fraction": 0.2,
+          "predator_metabolism_scale": 0.4,
+          "attack_cost": 1,
+          "attack_range_bonus": 2,
+          "predation_efficiency": 0.7,
+          "resource_zones": false,
+          "hazard_zones": false,
+          "hazard_damage": 0.5,
+          "width": 1600,
+          "height": 900,
+          "initial_population": 1000,
+          "max_population": 2000,
+          "initial_food": 500,
+          "max_food": 2000,
+          "food_spawn_rate": 10,
+          "food_energy": 25,
+          "initial_energy": 100,
+          "max_energy": 250,
+          "max_age": 3000,
+          "mutation_rate": 0.1,
+          "mutation_strength": 0.15,
+          "seed": 42,
+          "controller": "recurrent",
+          "neural_mutation_rate": 0.05,
+          "neural_mutation_strength": 0.1
+        },
+        "seeds": [
+          42,
+          123,
+          456
+        ],
+        "ticks": 5000
+      }
+    },
+    {
+      "tool": "run_experiment",
+      "arguments": {
+        "experiment_id": "f36d9a124011"
+      },
+      "result": {
+        "id": "f36d9a124011",
+        "name": "baseline_predator",
+        "config": {
+          "predation": true,
+          "predator_fraction": 0.2,
+          "predator_metabolism_scale": 1,
+          "attack_cost": 1,
+          "attack_range_bonus": 2,
+          "predation_efficiency": 0.7,
+          "resource_zones": false,
+          "hazard_zones": false,
+          "hazard_damage": 0.5,
+          "width": 1600,
+          "height": 900,
+          "initial_population": 1000,
+          "max_population": 2000,
+          "initial_food": 500,
+          "max_food": 2000,
+          "food_spawn_rate": 10,
+          "food_energy": 25,
+          "initial_energy": 100,
+          "max_energy": 250,
+          "max_age": 3000,
+          "mutation_rate": 0.1,
+          "mutation_strength": 0.15,
+          "seed": 42,
+          "controller": "recurrent",
+          "neural_mutation_rate": 0.05,
+          "neural_mutation_strength": 0.1
+        },
+        "ticks": 5000,
+        "results": [
+          {
+            "seed": 42,
+            "tick": 5000,
+            "population": 803,
+            "predators": 0,
+            "herbivores": 803,
+            "total_kills": 147,
+            "predation_energy": 7739.739661216736,
+            "food_count": 278,
+            "total_births": 3012,
+            "total_deaths": 3209,
+            "average_energy": 92.443665,
+            "average_age": 1154.4683,
+            "average_speed": 3.4230087,
+            "average_sensor_radius": 30.87989,
+            "average_metabolism": 0.16003726,
+            "average_size": 2.548009,
+            "average_reproduction_threshold": 192.01471,
+            "average_generation": 7.4346204,
+            "max_generation": 14,
+            "history": [
+              {
+                "tick": 0,
+                "population": 1000,
+                "predators": 178,
+                "herbivores": 822
+              },
+              {
+                "tick": 500,
+                "population": 199,
+                "predators": 5,
+                "herbivores": 194
+              },
+              {
+                "tick": 1000,
+                "population": 311,
+                "predators": 0,
+                "herbivores": 311
+              },
+              {
+                "tick": 1500,
+                "population": 732,
+                "predators": 0,
+                "herbivores": 732
+              },
+              {
+                "tick": 2000,
+                "population": 654,
+                "predators": 0,
+                "herbivores": 654
+              },
+              {
+                "tick": 2500,
+                "population": 712,
+                "predators": 0,
+                "herbivores": 712
+              },
+              {
+                "tick": 3000,
+                "population": 730,
+                "predators": 0,
+                "herbivores": 730
+              },
+              {
+                "tick": 3500,
+                "population": 773,
+                "predators": 0,
+                "herbivores": 773
+              },
+              {
+                "tick": 4000,
+                "population": 816,
+                "predators": 0,
+                "herbivores": 816
+              },
+              {
+                "tick": 4500,
+                "population": 772,
+                "predators": 0,
+                "herbivores": 772
+              },
+              {
+                "tick": 5000,
+                "population": 803,
+                "predators": 0,
+                "herbivores": 803
+              }
+            ]
+          },
+          {
+            "seed": 123,
+            "tick": 5000,
+            "population": 866,
+            "predators": 0,
+            "herbivores": 866,
+            "total_kills": 179,
+            "predation_energy": 9435.104811668396,
+            "food_count": 481,
+            "total_births": 3085,
+            "total_deaths": 3219,
+            "average_energy": 74.17706,
+            "average_age": 952.84644,
+            "average_speed": 2.480068,
+            "average_sensor_radius": 64.19024,
+            "average_metabolism": 0.14083034,
+            "average_size": 3.9700706,
+            "average_reproduction_threshold": 153.08524,
+            "average_generation": 8.475751,
+            "max_generation": 16,
+            "history": [
+              {
+                "tick": 0,
+                "population": 1000,
+                "predators": 226,
+                "herbivores": 774
+              },
+              {
+                "tick": 500,
+                "population": 169,
+                "predators": 4,
+                "herbivores": 165
+              },
+              {
+                "tick": 1000,
+                "population": 136,
+                "predators": 0,
+                "herbivores": 136
+              },
+              {
+                "tick": 1500,
+                "population": 223,
+                "predators": 0,
+                "herbivores": 223
+              },
+              {
+                "tick": 2000,
+                "population": 550,
+                "predators": 0,
+                "herbivores": 550
+              },
+              {
+                "tick": 2500,
+                "population": 714,
+                "predators": 0,
+                "herbivores": 714
+              },
+              {
+                "tick": 3000,
+                "population": 724,
+                "predators": 0,
+                "herbivores": 724
+              },
+              {
+                "tick": 3500,
+                "population": 764,
+                "predators": 0,
+                "herbivores": 764
+              },
+              {
+                "tick": 4000,
+                "population": 805,
+                "predators": 0,
+                "herbivores": 805
+              },
+              {
+                "tick": 4500,
+                "population": 826,
+                "predators": 0,
+                "herbivores": 826
+              },
+              {
+                "tick": 5000,
+                "population": 866,
+                "predators": 0,
+                "herbivores": 866
+              }
+            ]
+          },
+          {
+            "seed": 456,
+            "tick": 5000,
+            "population": 749,
+            "predators": 0,
+            "herbivores": 749,
+            "total_kills": 205,
+            "predation_energy": 11304.819366455078,
+            "food_count": 271,
+            "total_births": 4621,
+            "total_deaths": 4872,
+            "average_energy": 53.280453,
+            "average_age": 691.63416,
+            "average_speed": 2.1607616,
+            "average_sensor_radius": 60.041416,
+            "average_metabolism": 0.12992637,
+            "average_size": 7.545281,
+            "average_reproduction_threshold": 120.85951,
+            "average_generation": 16.596796,
+            "max_generation": 25,
+            "history": [
+              {
+                "tick": 0,
+                "population": 1000,
+                "predators": 223,
+                "herbivores": 777
+              },
+              {
+                "tick": 500,
+                "population": 171,
+                "predators": 4,
+                "herbivores": 167
+              },
+              {
+                "tick": 1000,
+                "population": 245,
+                "predators": 0,
+                "herbivores": 245
+              },
+              {
+                "tick": 1500,
+                "population": 729,
+                "predators": 0,
+                "herbivores": 729
+              },
+              {
+                "tick": 2000,
+                "population": 763,
+                "predators": 0,
+                "herbivores": 763
+              },
+              {
+                "tick": 2500,
+                "population": 736,
+                "predators": 0,
+                "herbivores": 736
+              },
+              {
+                "tick": 3000,
+                "population": 746,
+                "predators": 0,
+                "herbivores": 746
+              },
+              {
+                "tick": 3500,
+                "population": 759,
+                "predators": 0,
+                "herbivores": 759
+              },
+              {
+                "tick": 4000,
+                "population": 743,
+                "predators": 0,
+                "herbivores": 743
+              },
+              {
+                "tick": 4500,
+                "population": 752,
+                "predators": 0,
+                "herbivores": 752
+              },
+              {
+                "tick": 5000,
+                "population": 749,
+                "predators": 0,
+                "herbivores": 749
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "tool": "run_experiment",
+      "arguments": {
+        "experiment_id": "1ef8f50b0690"
+      },
+      "result": {
+        "id": "1ef8f50b0690",
+        "name": "reduced_predator_metabolism",
+        "config": {
+          "predation": true,
+          "predator_fraction": 0.2,
+          "predator_metabolism_scale": 0.4,
+          "attack_cost": 1,
+          "attack_range_bonus": 2,
+          "predation_efficiency": 0.7,
+          "resource_zones": false,
+          "hazard_zones": false,
+          "hazard_damage": 0.5,
+          "width": 1600,
+          "height": 900,
+          "initial_population": 1000,
+          "max_population": 2000,
+          "initial_food": 500,
+          "max_food": 2000,
+          "food_spawn_rate": 10,
+          "food_energy": 25,
+          "initial_energy": 100,
+          "max_energy": 250,
+          "max_age": 3000,
+          "mutation_rate": 0.1,
+          "mutation_strength": 0.15,
+          "seed": 42,
+          "controller": "recurrent",
+          "neural_mutation_rate": 0.05,
+          "neural_mutation_strength": 0.1
+        },
+        "ticks": 5000,
+        "results": [
+          {
+            "seed": 42,
+            "tick": 5000,
+            "population": 442,
+            "predators": 89,
+            "herbivores": 353,
+            "total_kills": 841,
+            "predation_energy": 38648.80118179321,
+            "food_count": 497,
+            "total_births": 4463,
+            "total_deaths": 5021,
+            "average_energy": 64.77596,
+            "average_age": 471.78506,
+            "average_speed": 3.0510292,
+            "average_sensor_radius": 41.225075,
+            "average_metabolism": 0.32586822,
+            "average_size": 5.9292765,
+            "average_reproduction_threshold": 129.83632,
+            "average_generation": 13.846154,
+            "max_generation": 25,
+            "history": [
+              {
+                "tick": 0,
+                "population": 1000,
+                "predators": 178,
+                "herbivores": 822
+              },
+              {
+                "tick": 500,
+                "population": 225,
+                "predators": 53,
+                "herbivores": 172
+              },
+              {
+                "tick": 1000,
+                "population": 197,
+                "predators": 13,
+                "herbivores": 184
+              },
+              {
+                "tick": 1500,
+                "population": 596,
+                "predators": 4,
+                "herbivores": 592
+              },
+              {
+                "tick": 2000,
+                "population": 483,
+                "predators": 4,
+                "herbivores": 479
+              },
+              {
+                "tick": 2500,
+                "population": 466,
+                "predators": 9,
+                "herbivores": 457
+              },
+              {
+                "tick": 3000,
+                "population": 460,
+                "predators": 19,
+                "herbivores": 441
+              },
+              {
+                "tick": 3500,
+                "population": 435,
+                "predators": 27,
+                "herbivores": 408
+              },
+              {
+                "tick": 4000,
+                "population": 430,
+                "predators": 43,
+                "herbivores": 387
+              },
+              {
+                "tick": 4500,
+                "population": 454,
+                "predators": 62,
+                "herbivores": 392
+              },
+              {
+                "tick": 5000,
+                "population": 442,
+                "predators": 89,
+                "herbivores": 353
+              }
+            ]
+          },
+          {
+            "seed": 123,
+            "tick": 5000,
+            "population": 455,
+            "predators": 38,
+            "herbivores": 417,
+            "total_kills": 496,
+            "predation_energy": 29458.01641559601,
+            "food_count": 749,
+            "total_births": 2901,
+            "total_deaths": 3446,
+            "average_energy": 90.56982,
+            "average_age": 731.4835,
+            "average_speed": 2.6037505,
+            "average_sensor_radius": 27.651571,
+            "average_metabolism": 0.38292983,
+            "average_size": 2.9333963,
+            "average_reproduction_threshold": 179.01591,
+            "average_generation": 9.131868,
+            "max_generation": 16,
+            "history": [
+              {
+                "tick": 0,
+                "population": 1000,
+                "predators": 226,
+                "herbivores": 774
+              },
+              {
+                "tick": 500,
+                "population": 163,
+                "predators": 48,
+                "herbivores": 115
+              },
+              {
+                "tick": 1000,
+                "population": 93,
+                "predators": 11,
+                "herbivores": 82
+              },
+              {
+                "tick": 1500,
+                "population": 172,
+                "predators": 4,
+                "herbivores": 168
+              },
+              {
+                "tick": 2000,
+                "population": 454,
+                "predators": 2,
+                "herbivores": 452
+              },
+              {
+                "tick": 2500,
+                "population": 517,
+                "predators": 9,
+                "herbivores": 508
+              },
+              {
+                "tick": 3000,
+                "population": 454,
+                "predators": 12,
+                "herbivores": 442
+              },
+              {
+                "tick": 3500,
+                "population": 490,
+                "predators": 19,
+                "herbivores": 471
+              },
+              {
+                "tick": 4000,
+                "population": 470,
+                "predators": 24,
+                "herbivores": 446
+              },
+              {
+                "tick": 4500,
+                "population": 450,
+                "predators": 28,
+                "herbivores": 422
+              },
+              {
+                "tick": 5000,
+                "population": 455,
+                "predators": 38,
+                "herbivores": 417
+              }
+            ]
+          },
+          {
+            "seed": 456,
+            "tick": 5000,
+            "population": 619,
+            "predators": 92,
+            "herbivores": 527,
+            "total_kills": 622,
+            "predation_energy": 40717.46515464783,
+            "food_count": 596,
+            "total_births": 2792,
+            "total_deaths": 3173,
+            "average_energy": 96.57234,
+            "average_age": 904.231,
+            "average_speed": 2.3148866,
+            "average_sensor_radius": 41.687057,
+            "average_metabolism": 0.22927321,
+            "average_size": 4.3103814,
+            "average_reproduction_threshold": 178.16696,
+            "average_generation": 7.2940226,
+            "max_generation": 14,
+            "history": [
+              {
+                "tick": 0,
+                "population": 1000,
+                "predators": 223,
+                "herbivores": 777
+              },
+              {
+                "tick": 500,
+                "population": 200,
+                "predators": 45,
+                "herbivores": 155
+              },
+              {
+                "tick": 1000,
+                "population": 179,
+                "predators": 11,
+                "herbivores": 168
+              },
+              {
+                "tick": 1500,
+                "population": 332,
+                "predators": 9,
+                "herbivores": 323
+              },
+              {
+                "tick": 2000,
+                "population": 744,
+                "predators": 6,
+                "herbivores": 738
+              },
+              {
+                "tick": 2500,
+                "population": 727,
+                "predators": 7,
+                "herbivores": 720
+              },
+              {
+                "tick": 3000,
+                "population": 681,
+                "predators": 19,
+                "herbivores": 662
+              },
+              {
+                "tick": 3500,
+                "population": 653,
+                "predators": 23,
+                "herbivores": 630
+              },
+              {
+                "tick": 4000,
+                "population": 668,
+                "predators": 44,
+                "herbivores": 624
+              },
+              {
+                "tick": 4500,
+                "population": 647,
+                "predators": 79,
+                "herbivores": 568
+              },
+              {
+                "tick": 5000,
+                "population": 619,
+                "predators": 92,
+                "herbivores": 527
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "tool": "compare_results",
+      "arguments": {
+        "experiment_ids": [
+          "f36d9a124011",
+          "1ef8f50b0690"
+        ],
+        "metric": "population"
+      },
+      "result": {
+        "metric": "population",
+        "groups": [
+          {
+            "id": "f36d9a124011",
+            "name": "baseline_predator",
+            "values": [
+              803,
+              866,
+              749
+            ],
+            "mean": 806,
+            "sample_sd": 58.557663887829406
+          },
+          {
+            "id": "1ef8f50b0690",
+            "name": "reduced_predator_metabolism",
+            "values": [
+              442,
+              455,
+              619
+            ],
+            "mean": 505.3333333333333,
+            "sample_sd": 98.65258908580824
+          }
+        ]
+      }
+    },
+    {
+      "tool": "compare_results",
+      "arguments": {
+        "experiment_ids": [
+          "f36d9a124011",
+          "1ef8f50b0690"
+        ],
+        "metric": "predators"
+      },
+      "result": {
+        "metric": "predators",
+        "groups": [
+          {
+            "id": "f36d9a124011",
+            "name": "baseline_predator",
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "mean": 0,
+            "sample_sd": 0
+          },
+          {
+            "id": "1ef8f50b0690",
+            "name": "reduced_predator_metabolism",
+            "values": [
+              89,
+              38,
+              92
+            ],
+            "mean": 73,
+            "sample_sd": 30.347981810987037
+          }
+        ]
+      }
+    },
+    {
+      "tool": "compare_results",
+      "arguments": {
+        "experiment_ids": [
+          "f36d9a124011",
+          "1ef8f50b0690"
+        ],
+        "metric": "herbivores"
+      },
+      "result": {
+        "metric": "herbivores",
+        "groups": [
+          {
+            "id": "f36d9a124011",
+            "name": "baseline_predator",
+            "values": [
+              803,
+              866,
+              749
+            ],
+            "mean": 806,
+            "sample_sd": 58.557663887829406
+          },
+          {
+            "id": "1ef8f50b0690",
+            "name": "reduced_predator_metabolism",
+            "values": [
+              353,
+              417,
+              527
+            ],
+            "mean": 432.3333333333333,
+            "sample_sd": 88.00757543151234
+          }
+        ]
+      }
+    }
+  ],
+  "summary": [
+    {
+      "name": "baseline_predator",
+      "seeds": [
+        42,
+        123,
+        456
+      ],
+      "mean_population": 806,
+      "mean_predators": 0,
+      "coexistence_count": 0,
+      "mean_metabolism": 0.14359799
+    },
+    {
+      "name": "reduced_predator_metabolism",
+      "seeds": [
+        42,
+        123,
+        456
+      ],
+      "mean_population": 505.3333333333333,
+      "mean_predators": 73,
+      "coexistence_count": 3,
+      "mean_metabolism": 0.31269042
+    }
+  ],
+  "complete": true
+}

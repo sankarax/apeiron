@@ -1,0 +1,115 @@
+.history-view {
+  padding: 36px 0;
+}
+.history-view header {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+.history-view header small {
+  font: 12px var(--mono);
+  color: var(--muted);
+}
+.history-view h1 {
+  font-size: clamp(42px, 5vw, 72px);
+  margin: 0;
+  letter-spacing: 0;
+}
+.history-view h2 {
+  font-size: 36px;
+  margin: 0 0 16px;
+}
+.history-view h3 {
+  font-size: 25px;
+  margin: 20px 0 12px;
+}
+.history-view section {
+  border-top: 1px solid var(--rule);
+  padding: 24px 0;
+}
+.history-view button,
+.history-view input {
+  margin: 4px;
+}
+.history-view header button,
+.history-view section:nth-of-type(2) > button {
+  background: var(--moss);
+  color: var(--paper);
+  border-color: var(--moss);
+}
+.history-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+}
+.history-tree:empty {
+  display: none;
+}
+.history-tree button {
+  font: 12px var(--mono);
+  background: #faf9f4;
+}
+.history-tree button:last-child {
+  background: var(--moss);
+  color: var(--paper);
+}
+.history-tree button + button {
+  margin-top: 20px;
+  position: relative;
+}
+.history-tree button + button::before {
+  content: "";
+  position: absolute;
+  height: 24px;
+  width: 1px;
+  background: var(--moss);
+  top: -25px;
+  left: 50%;
+}
+.history-genome {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 16px;
+}
+.history-genome div {
+  border-top: 1px solid var(--rule);
+  padding: 12px 0;
+}
+.history-genome dt {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: capitalize;
+}
+.history-genome dd {
+  margin: 8px 0 0;
+  font: 18px var(--mono);
+}
+.history-children,
+.history-checkpoint {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+.history-children button {
+  font: 12px var(--mono);
+}
+.history-branches {
+  border-top: 1px solid var(--moss);
+  padding-top: 12px;
+}
+.history-checkpoint {
+  border-top: 1px solid var(--rule);
+  padding: 12px 0;
+}
+.history-checkpoint span {
+  flex: 1;
+  min-width: 180px;
+  overflow-wrap: anywhere;
+}
+.history-view canvas {
+  display: block;
+  width: min(100%, 800px);
+}

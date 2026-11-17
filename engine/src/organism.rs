@@ -4,10 +4,21 @@ use serde::{Deserialize, Serialize};
 
 use crate::config::SimulationConfig;
 use crate::genome::Genome;
+use crate::neural_controller::NeuralAction;
+use crate::neural_genome::NeuralGenome;
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum Species {
+    #[default]
+    Herbivore,
+    Predator,
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Organism {
     pub id: u64,
+    #[serde(default)]
+    pub species: Species,
     pub parent_id: Option<u64>,
     pub generation: u32,
 
@@ -18,9 +29,13 @@ pub struct Organism {
     pub vy: f32,
 
     pub energy: f32,
+    #[serde(skip)]
+    pub previous_energy: f32,
     pub age: u32,
 
     pub genome: Genome,
+    #[serde(skip)]
+    pub brain: NeuralGenome,
 }
 
 impl Organism {
@@ -31,6 +46,7 @@ impl Organism {
 
         Self {
             id,
+            species: Species::Herbivore,
             parent_id: None,
             generation: 0,
 
@@ -41,9 +57,11 @@ impl Organism {
             vy: angle.sin() * genome.speed,
 
             energy: config.initial_energy,
+            previous_energy: config.initial_energy,
             age: 0,
 
             genome,
+            brain: NeuralGenome::random(config.controller, rng),
         }
     }
 
@@ -65,13 +83,18 @@ impl Organism {
     }
 
     pub fn wander(&mut self, rng: &mut impl Rng) {
-        let current_angle = self.vy.atan2(self.vx);
         let turn = rng.random_range(-0.3..0.3);
 
-        let angle = current_angle + turn;
+        self.wander_with_turn(turn);
+    }
 
-        self.vx = angle.cos() * self.genome.speed;
-        self.vy = angle.sin() * self.genome.speed;
+    pub fn wander_with_turn(&mut self, turn: f32) {
+        let current_angle = self.vy.atan2(self.vx);
+
+        let new_angle = current_angle + turn;
+
+        self.vx = new_angle.cos() * self.genome.speed;
+        self.vy = new_angle.sin() * self.genome.speed;
     }
 
     pub fn update(&mut self, config: &SimulationConfig) {
@@ -80,13 +103,26 @@ impl Organism {
 
         self.age += 1;
 
-        let speed_cost = self.genome.speed.powi(2) * 0.02;
+        let speed_cost = 0.02 * (self.vx * self.vx + self.vy * self.vy);
         let sensor_cost = self.genome.sensor_radius * 0.001;
         let size_cost = self.genome.size * 0.01;
 
         let energy_cost = self.genome.metabolism + speed_cost + sensor_cost + size_cost;
 
-        self.energy = (self.energy - energy_cost).max(0.0);
+        let scale = if config.predation && self.species == Species::Predator {
+            config.predator_metabolism_scale
+        } else {
+            1.0
+        };
+        self.energy = (self.energy - energy_cost * scale).max(0.0);
+        if config.hazard_zones {
+            let dx = wrapped_delta(self.x, config.width * 0.5, config.width);
+            let dy = wrapped_delta(self.y, config.height * 0.5, config.height);
+            let radius = config.width.min(config.height) * 0.12;
+            if dx * dx + dy * dy < radius * radius {
+                self.energy = (self.energy - config.hazard_damage).max(0.0);
+            }
+        }
     }
 
     pub fn eat(&mut self, energy: f32, config: &SimulationConfig) {
@@ -125,6 +161,7 @@ impl Organism {
 
         Some(Self {
             id: child_id,
+            species: self.species,
             parent_id: Some(self.id),
             generation: self.generation + 1,
 
@@ -133,18 +170,43 @@ impl Organism {
 
             vx: angle.cos() * child_genome.speed,
             vy: angle.sin() * child_genome.speed,
-
             energy: child_energy,
+            previous_energy: child_energy,
             age: 0,
 
             genome: child_genome,
+            brain: self.brain.inherit(config.neural_mutation(), rng),
         })
+    }
+
+    pub fn has_neural_controller(&self) -> bool {
+        self.brain.is_neural()
+    }
+
+    pub fn neural_parameter_count(&self) -> usize {
+        self.brain.parameter_count()
+    }
+
+    pub fn neural_parameter_bytes(&self) -> usize {
+        self.brain.parameter_bytes()
+    }
+    pub fn record_energy(&mut self) {
+        self.previous_energy = self.energy;
+    }
+
+    pub fn apply_neural_action(&mut self, action: NeuralAction) {
+        let angle = self.vy.atan2(self.vx) + action.turn;
+        let speed = self.genome.speed * action.speed;
+
+        self.vx = angle.cos() * speed;
+        self.vy = angle.sin() * speed;
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::neural_genome::ControllerKind;
     use rand::SeedableRng;
     use rand_chacha::ChaCha8Rng;
 
@@ -219,5 +281,111 @@ mod tests {
         organism.update(&config);
 
         assert!((organism.x - 2.0).abs() < 0.001);
+    }
+
+    #[test]
+    fn organism_defaults_to_heuristic_controller() {
+        let config = SimulationConfig::default();
+        let mut rng = ChaCha8Rng::seed_from_u64(42);
+
+        let organism = Organism::new(0, &config, &mut rng);
+
+        assert!(!organism.has_neural_controller());
+        assert_eq!(organism.brain.kind(), ControllerKind::Heuristic);
+        assert_eq!(organism.neural_parameter_count(), 0);
+    }
+
+    #[test]
+    fn organism_initializes_small_controller() {
+        let config = SimulationConfig {
+            controller: ControllerKind::Small,
+            ..SimulationConfig::default()
+        };
+
+        let mut rng = ChaCha8Rng::seed_from_u64(42);
+        let organism = Organism::new(0, &config, &mut rng);
+
+        assert!(organism.has_neural_controller());
+        assert_eq!(organism.brain.kind(), ControllerKind::Small);
+        assert_eq!(organism.neural_parameter_count(), 83);
+        assert_eq!(organism.neural_parameter_bytes(), 332);
+    }
+
+    #[test]
+    fn organism_initializes_deep_controller() {
+        let config = SimulationConfig {
+            controller: ControllerKind::Deep,
+            ..SimulationConfig::default()
+        };
+
+        let mut rng = ChaCha8Rng::seed_from_u64(42);
+        let organism = Organism::new(0, &config, &mut rng);
+
+        assert!(organism.has_neural_controller());
+        assert_eq!(organism.brain.kind(), ControllerKind::Deep);
+        assert_eq!(organism.neural_parameter_count(), 1140);
+        assert_eq!(organism.neural_parameter_bytes(), 4560);
+    }
+
+    #[test]
+    fn offspring_inherits_neural_controller() {
+        let config = SimulationConfig {
+            controller: ControllerKind::Deep,
+            neural_mutation_rate: 0.0,
+            ..SimulationConfig::default()
+        };
+
+        let mut rng = ChaCha8Rng::seed_from_u64(42);
+        let mut parent = Organism::new(0, &config, &mut rng);
+
+        parent.energy = config.max_energy;
+        parent.age = 100;
+
+        let original_brain = parent.brain.clone();
+        let child = parent.reproduce(1, &config, &mut rng).unwrap();
+
+        assert_eq!(child.brain.kind(), ControllerKind::Deep);
+        assert_eq!(child.brain, original_brain);
+        assert_eq!(parent.brain, original_brain);
+    }
+
+    #[test]
+    fn offspring_brain_mutates_independently() {
+        let config = SimulationConfig {
+            controller: ControllerKind::Deep,
+            neural_mutation_rate: 1.0,
+            neural_mutation_strength: 0.1,
+            ..SimulationConfig::default()
+        };
+
+        let mut rng = ChaCha8Rng::seed_from_u64(42);
+        let mut parent = Organism::new(0, &config, &mut rng);
+
+        parent.energy = config.max_energy;
+        parent.age = 100;
+
+        let original_brain = parent.brain.clone();
+        let child = parent.reproduce(1, &config, &mut rng).unwrap();
+
+        assert_eq!(parent.brain, original_brain);
+        assert_ne!(child.brain, original_brain);
+        assert_eq!(child.parent_id, Some(parent.id));
+        assert_eq!(child.generation, parent.generation + 1);
+    }
+
+    #[test]
+    fn organism_snapshot_excludes_brain_parameters() {
+        let config = SimulationConfig {
+            controller: ControllerKind::Deep,
+            ..SimulationConfig::default()
+        };
+
+        let mut rng = ChaCha8Rng::seed_from_u64(42);
+        let organism = Organism::new(0, &config, &mut rng);
+
+        let snapshot = serde_json::to_value(&organism).unwrap();
+
+        assert!(snapshot.get("brain").is_none());
+        assert!(snapshot.get("genome").is_some());
     }
 }

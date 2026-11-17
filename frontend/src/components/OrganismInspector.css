@@ -1,0 +1,400 @@
+.organism-inspector {
+  --paper: #f1efe7;
+  --ink: #24241f;
+  --muted: #646459;
+  --rule: #b9b8ad;
+  --moss: #4c6946;
+
+  background: var(--paper);
+  color: var(--ink);
+  color-scheme: light;
+  padding: 20px;
+  font-family: "IBM Plex Sans", sans-serif;
+  min-width: 0;
+}
+
+.inspector-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inspector-index,
+.specimen-status,
+.specimen-figure figcaption,
+.inspector-footer {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.organism-inspector h2 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  text-transform: none;
+  line-height: 1.05;
+  margin: 12px 0;
+}
+
+.organism-inspector h2 span {
+  display: block;
+}
+
+.organism-inspector .inspector-close {
+  background: transparent;
+  border: none;
+  color: var(--ink);
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+  border-radius: 0;
+}
+
+.organism-inspector .inspector-close:hover {
+  background: #dedcd2;
+}
+
+.specimen-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--moss);
+}
+
+.specimen-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--moss);
+}
+
+.specimen-figure {
+  margin: 20px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.specimen-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.specimen-diagram text {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.specimen-figure figcaption {
+  padding: 10px 0;
+  font-size: 8px;
+}
+
+.specimen-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.specimen-summary > div {
+  min-width: 0;
+}
+
+.specimen-summary span {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.specimen-summary strong {
+  display: block;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+
+.inspector-subsection {
+  border-top: 1px solid var(--ink);
+  padding-top: 16px;
+  margin-top: 24px;
+}
+
+.inspector-subsection h3 {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 23px;
+  font-weight: 400;
+  margin: 0 0 18px;
+}
+
+.trait {
+  margin-bottom: 18px;
+}
+
+.trait-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.trait-heading span {
+  color: var(--muted);
+}
+
+.trait-heading strong {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.trait-track,
+.energy-track {
+  height: 4px;
+  background: #d9d8ce;
+}
+
+.energy-track {
+  height: 7px;
+}
+
+.trait-fill,
+.energy-fill {
+  height: 100%;
+  background: var(--moss);
+}
+
+.trait-range {
+  display: flex;
+  justify-content: space-between;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.specimen-properties {
+  margin: 20px 0 0;
+}
+
+.specimen-properties > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 0;
+  border-bottom: 1px solid #d5d3c9;
+  font-size: 11px;
+}
+
+.specimen-properties dt {
+  color: var(--muted);
+}
+
+.specimen-properties dd {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  text-align: right;
+}
+
+.reproduction-ready {
+  color: var(--moss);
+}
+
+.genome-color {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.genome-color > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.genome-color-swatch {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #a3a397;
+}
+
+.genome-color strong {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.inspector-footer {
+  border-top: 1px solid var(--rule);
+  margin-top: 24px;
+  padding-top: 12px;
+  font-size: 8px;
+}
+
+.inspector-empty {
+  text-align: center;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  margin-top: 20px;
+}
+
+.inspector-empty svg {
+  width: 85px;
+  margin: 0 auto 12px;
+}
+
+.organism-inspector .inspector-empty p {
+  font-size: 14px;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.inspector-empty > span {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+  display: block;
+}
+
+.organism-inspector .specimen-unavailable {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.organism-inspector .inspector-clear {
+  background: transparent;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  color: var(--ink);
+  font-size: 11px;
+  padding: 10px;
+  margin-top: 16px;
+}
+
+.organism-inspector .inspector-clear:hover {
+  background: #dedcd2;
+}
+
+.specimen-workspace {
+  margin-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+
+.specimen-workspace .organism-inspector {
+  padding: 22px 0 0;
+}
+
+.specimen-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: start;
+  margin-top: 18px;
+}
+
+.specimen-columns > * {
+  min-width: 0;
+}
+
+.specimen-columns .inspector-subsection {
+  border-top: 0;
+  border-left: 1px solid var(--rule);
+  margin: 0;
+  padding: 0 0 0 24px;
+}
+
+.specimen-columns h2 {
+  margin: 0 0 12px;
+  letter-spacing: 0;
+}
+
+.specimen-columns h2 span {
+  display: inline;
+}
+
+.specimen-columns .specimen-figure {
+  margin: 14px 0;
+}
+
+.specimen-columns .specimen-diagram {
+  max-height: 220px;
+}
+
+.specimen-columns .specimen-summary {
+  margin: 12px 0;
+}
+
+.specimen-columns .trait {
+  margin-bottom: 12px;
+}
+
+.specimen-columns .trait-heading,
+.specimen-columns .trait-heading strong,
+.specimen-columns .specimen-properties > div,
+.specimen-columns .specimen-properties dd {
+  font-size: 12px;
+}
+
+.specimen-workspace .inspector-empty {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+  padding: 12px 0;
+  margin-top: 8px;
+}
+
+.specimen-workspace .inspector-empty svg {
+  flex: 0 0 42px;
+  width: 42px;
+  margin: 0;
+}
+
+.specimen-workspace .inspector-empty p {
+  margin: 0;
+}
+
+@media (max-width: 1050px) {
+  .specimen-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .specimen-columns .inspector-subsection:last-child {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+    padding: 20px 0 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .specimen-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .specimen-columns .inspector-subsection {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+    padding: 20px 0 0;
+  }
+
+  .specimen-workspace .inspector-empty {
+    flex-wrap: wrap;
+  }
+}

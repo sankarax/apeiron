@@ -7,6 +7,10 @@ pub struct Metrics {
     pub tick: u64,
 
     pub population: usize,
+    pub predators: usize,
+    pub herbivores: usize,
+    pub total_kills: u64,
+    pub predation_energy: f64,
     pub food_count: usize,
 
     pub total_births: u64,
@@ -43,6 +47,10 @@ impl Metrics {
         }
 
         for organism in &world.organisms {
+            match organism.species {
+                crate::organism::Species::Predator => metrics.predators += 1,
+                crate::organism::Species::Herbivore => metrics.herbivores += 1,
+            }
             metrics.average_energy += organism.energy;
             metrics.average_age += organism.age as f32;
 

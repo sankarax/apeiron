@@ -1,0 +1,73 @@
+.app .workspace-heading {
+  padding: 24px 0 20px;
+}
+
+.app .workspace-heading h1 {
+  font-size: clamp(44px, 4.5vw, 70px);
+  letter-spacing: 0;
+}
+
+.app .header .brand {
+  letter-spacing: 0;
+}
+
+.app .metrics {
+  margin-bottom: 20px;
+}
+
+.app .metric {
+  padding: 12px 18px;
+}
+
+.app .metric strong {
+  font-family: var(--mono);
+  font-size: clamp(22px, 2.4vw, 34px);
+}
+
+.app .workspace {
+  align-items: start;
+}
+
+.app .ecosystem-viewport {
+  height: clamp(340px, 52vh, 600px);
+}
+
+.app .sidebar hr {
+  margin: 18px 0;
+}
+
+.app .sidebar > p {
+  margin: 6px 0;
+}
+
+.app .environment-config,
+.app .evolution-charts,
+.app .performance-monitor {
+  padding: 24px 0;
+  margin-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+
+.app .brain-inspector {
+  margin-top: 20px;
+  padding: 18px 0;
+}
+
+.app .brain-inspector h2 {
+  font-size: 36px;
+  margin: 0 0 8px;
+}
+
+.app .brain-inspector p {
+  margin: 6px 0;
+}
+
+@media (max-width: 650px) {
+  .app .metric {
+    padding: 10px;
+  }
+
+  .app .ecosystem-viewport {
+    height: 340px;
+  }
+}
